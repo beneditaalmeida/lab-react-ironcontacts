@@ -1,18 +1,33 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-
 import "./App.css";
 
-class App extends Component {
-  render() {
-    const message = "This is my app";
+//This is a JSON file with an array with all the contacts
+import contacts from "./contacts";
 
+//This is a component
+import ContactList from "./components/ContactList";
+
+import Container from "react-bootstrap/Container";
+
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      //This state is saving into a contactList variable, an ARRAY with 5 contacts from the JSON file
+      contactList: contacts.slice(0, 5)
+    };
+  }
+
+  addContact() {
+    let addContact = Math.floor(Math.random());
+    this.setState();
+  }
+
+  render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>{message}</p>
-        </header>
+        <button onClick={this.addContact}>Random Contact</button>
+        <ContactList contacts={this.state.contactList} />
       </div>
     );
   }
